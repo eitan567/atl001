@@ -72,6 +72,7 @@ grails.project.dependency.resolution = {
 		compile ":webxml:1.4.1"
 		
 		runtime ":shiro:1.2.0-SNAPSHOT"	
+		compile ":cloud-support:1.0.11"
 		
 		//runtime: 'postgresql:postgresql:9.1-902.jdbc4'
 		
