@@ -46,13 +46,13 @@ environments {
 			//password = "QKfbkg-DQ4STvFIsbShpsB_UOL"
 			
 			
-			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_bc1241f25867765?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
-			username = "b0830f1c23d77c"
-			password = "4d06e8e8" 
+//			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_6a0356c2d5724f7?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+//			username = "b9ffc6703dfbc2"
+//			password = "41b44e53" 
 			
-			//url = "jdbc:mysql://localhost:3306/atlancy_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
-			//username = "root"
-			//password = ""
+			url = "jdbc:mysql://localhost:3306/atlancy_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+			username = "root"
+			password = ""
 			
 		}
 		hibernate {
@@ -62,17 +62,17 @@ environments {
 	test {
 		dataSource {
 			dbCreate = "update" // one of 'create', 'create-drop','update'
-			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_bc1241f25867765?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
-			username = "b0830f1c23d77c"
-			password = "4d06e8e8"
+//			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_6a0356c2d5724f7?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+//			username = "b9ffc6703dfbc2"
+//			password = "41b44e53"
 			
 			//url="jdbc:postgresql://ec2-107-20-220-11.compute-1.amazonaws.com:5432/d1ssepvfjbk60g"
 			//username = "puxxbzzyskthea"
 			//password = "QKfbkg-DQ4STvFIsbShpsB_UOL"
 			
-			//url = "jdbc:mysql://localhost:3306/atlancy_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
-			//username = "root"
-			//password = ""
+			url = "jdbc:mysql://localhost:3306/atlancy_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+			username = "root"
+			password = ""
 		}
 		hibernate {
 			show_sql = true
@@ -81,13 +81,13 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_bc1241f25867765?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
-			username = "b0830f1c23d77c"
-			password = "4d06e8e8"
+//			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_6a0356c2d5724f7?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+//			username = "b9ffc6703dfbc2"
+//			password = "41b44e53"
 			
-			//url = "jdbc:mysql://localhost:3306/atlancy_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
-			//username = "root"
-			//password = ""
+			url = "jdbc:mysql://localhost:3306/atlancy_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+			username = "root"
+			password = ""
 			
 			//url="jdbc:postgresql://ec2-107-20-220-11.compute-1.amazonaws.com:5432/d1ssepvfjbk60g"
 			//username = "puxxbzzyskthea"

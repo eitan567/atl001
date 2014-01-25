@@ -119,7 +119,7 @@
 	                                    <i class="icon-angle-down"></i>
 	                                </a>
 	                                <ul class="dropdown-menu">
-	                                    <li><g:link controller="spyBoy" action="index_new"><g:message code="nav.applications.spyboy"/></g:link></li>
+	                                    <li><g:link controller="secrecy" action="index"><g:message code="nav.applications.secrecy"/></g:link></li>
 	                                    <li><a href="feature_buttons.html"><g:message code="nav.applications.trivia"/></a></li>
 	                                    <li><a href="feature_forms.html"><g:message code="nav.applications.backandpack"/></a></li>
 	                                    <li><a href="feature_icons.html"><g:message code="nav.applications.sevicecom"/></a></li>
