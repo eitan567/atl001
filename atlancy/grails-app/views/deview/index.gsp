@@ -1,5 +1,5 @@
 
-<%@ page import="com.xaviar.domain.Sms"%>
+<%@ page import="com.atlancy.domain.Sms"%>
 <!DOCTYPE html>
 <html>
 <head>

