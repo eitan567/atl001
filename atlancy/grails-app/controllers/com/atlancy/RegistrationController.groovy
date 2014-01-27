@@ -6,9 +6,6 @@ import org.apache.shiro.authc.UsernamePasswordToken
 import com.atlancy.domain.Role
 import com.atlancy.domain.User
 
-
-
-
 class RegistrationController {
 
 	def shiroSecurityService

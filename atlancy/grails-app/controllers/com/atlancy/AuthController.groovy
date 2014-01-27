@@ -5,6 +5,7 @@ import org.apache.shiro.authc.AuthenticationException
 import org.apache.shiro.authc.UsernamePasswordToken
 import org.apache.shiro.web.util.WebUtils
 
+import com.atlancy.domain.Role;
 import com.atlancy.domain.User;
 
 
@@ -18,7 +19,7 @@ class AuthController {
 		User user = new User()
 		return [ user: user,username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri ]
 	}
-	
+
 	def signup = {
 		User user = new User()
 		return [ user: user,username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri ]
@@ -87,14 +88,14 @@ class AuthController {
 
 		// If a controller redirected to this page, redirect back
 		// to it. Otherwise redirect to the root URI.
-		def targetUri = params.registerTargetUri ?: "/"
+		//def targetUri = params.registerTargetUri ?: "/"
 
 		// Handle requests saved by Shiro filters.
-		def savedRequest = WebUtils.getSavedRequest(request)
-		if (savedRequest) {
-			targetUri = savedRequest.requestURI - request.contextPath
-			if (savedRequest.queryString) targetUri = targetUri + '?' + savedRequest.queryString
-		}
+		//def savedRequest = WebUtils.getSavedRequest(request)
+		//if (savedRequest) {
+		//	targetUri = savedRequest.requestURI - request.contextPath
+		//		if (savedRequest.queryString) targetUri = targetUri + '?' + savedRequest.queryString
+		//	}
 
 		// Check to see if the username already exists
 		def user = User.findByUsername(params.username)
@@ -116,27 +117,29 @@ class AuthController {
 
 			// Passwords match. Let's attempt to save the user
 			else {
-				// Create user
-				user = new User(
-						username: params.username,
-						firstName: params.firstName,
-						lastName: params.lastName,
-						birthDate: params.birthDate!=null ? new Date(params.birthDate):null,
-						occupation: params.occupation,
-						email: params.email,
-						number: params.number,
-						type: params.type,
-						country: params.country,
-						more: params.more,
-						siteURL: params.siteURL,
-						address: params.address,
-						city: params.city,
-						password: shiroSecurityService.encodePassword(params.password)
-						)
-
-				if (user.save(flush: true, failOnError: true)) {
-
-					// Add USER role to new user
+				try{
+					// Create user
+					user = new User(
+							username: params.username,
+							firstName: params.firstName,
+							lastName: params.lastName,
+							birthDate: params.birthDate!=null ? new Date(params.birthDate):null,
+							occupation: params.occupation,
+							email: params.email,
+							number: params.number,
+							type: params.type,
+							country: params.country,
+							more: params.more,
+							siteURL: params.siteURL,
+							address: params.address,
+							city: params.city,
+							password: shiroSecurityService.encodePassword(params.password)
+					)
+					
+					
+					
+					user.save(flush: true, failOnError: true)
+					// Add USER role to new user 
 					user.addToRoles(Role.findByName('ROLE_USER'))
 
 					// Login user
@@ -144,11 +147,12 @@ class AuthController {
 					SecurityUtils.subject.login(authToken)
 
 					//redirect(controller: 'home', action: 'secured')
-					redirect(uri: targetUri)
-				}
-				else {
-
-				}
+					flash.message =  message(code: "register.required.success")
+					[error:false]
+				}catch(Exception e){
+					flash.message =  message(code: "register.required.failed")
+					[error:true]
+				}				
 			}
 		}
 	}

@@ -108,25 +108,43 @@ class SecrecyController {
 					}
 				}
 			}else{
+				colSortName="time";
+				switch(params.iSortCol_0){
+					case "0":colSortName="folderName";break;
+					case "1":colSortName="folderName";break;
+					case "2":colSortName="msg";break;
+					case "3":colSortName="time";break;
+				}
 				if(params.iDisplayLength!="-1"){
+					def smsCriteria = Sms.createCriteria();
+					results = smsCriteria.list(offset:Long.parseLong(params.iDisplayStart),max:Long.parseLong(params.iDisplayLength)) {
+						and {
+							targetPhone{
+								eq("simSubscriberId", currentTargetPhone.simSubscriberId)
+							}
+						}
+						order(colSortName, params.sSortDir_0)
+					}
+					
 					def allSmsCriteria = Sms.createCriteria();
-					def allSms = allSmsCriteria.list{
+					def allResults = allSmsCriteria.list{
 						and {
 							targetPhone{
 								eq("simSubscriberId", currentTargetPhone.simSubscriberId)
 							}
 						}
 					}
-					totalSize = allSms!=null ? allSms.size():0;
+					
+					totalSize = allResults!=null ? allResults.size():0;
 
 					isAll = true;
-					def session = sessionFactory.currentSession
-					def query = session.createSQLQuery("select * from Sms t1 left join Contact t2 on (t1.address = t2.number and t1.folder_name = 'inbox') where t1.target_phone_id='"+ params.simSubscriberId +"' group by t1.time order by t1.time asc LIMIT " + params.iDisplayStart + ", "+ params.iDisplayLength);
-					query.addEntity(com.atlancy.domain.Sms.class);// this defines the result type of the query
-					query.addEntity(com.atlancy.domain.Contact.class); // this defines the result type of the query
-					if(query!=null){
-						results=query.list();
-					}
+//					def session = sessionFactory.currentSession
+//					def query = session.createSQLQuery("select * from Sms t1 left join Contact t2 on (t1.address = t2.number and t1.folder_name = 'inbox') where t1.target_phone_id='"+ params.simSubscriberId +"' group by t1.time order by t1.time asc LIMIT " + params.iDisplayStart + ", "+ params.iDisplayLength);
+//					query.addEntity(com.atlancy.domain.Sms.class);// this defines the result type of the query
+//					query.addEntity(com.atlancy.domain.Contact.class); // this defines the result type of the query
+//					if(query!=null){
+//						results=query.list();
+//					}
 				}
 			}
 			render(contentType: 'text/json') {[iTotalRecords:totalSize,iTotalDisplayRecords:totalSize,isAllSmses:isAll,phoneOwnerData:currentTargetPhone,contactDetails:contact!=null ? contact.get(0):null,smsInstanceList: results, smsInstanceTotal:totalSize]};

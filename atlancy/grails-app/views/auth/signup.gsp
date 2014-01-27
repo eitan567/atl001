@@ -26,29 +26,38 @@
           <header class="panel-heading bg bg-primary text-center">
             הירשם
           </header>
-          <form action="index.html" class="panel-body">
+          <g:form class="panel-body" controller="auth" action="register" method="post">
+          	<div id="resultsDiv"></div>            
             <div class="form-group">
-              <label class="control-label">שם מלא</label>
-              <input type="text" placeholder="eg. Your name or company" class="form-control">
+              <label class="control-label">שם פרטי</label>
+              <input type="text" name="firstName" placeholder="פלוני" class="form-control">
+            </div>
+            <div class="form-group">             
+              <label class="control-label">שם משפחה</label>
+              <input type="text" name="lastName" placeholder="אלמוני" class="form-control">
             </div>
             <div class="form-group">
-              <label class="control-label">שם משתמש (באנגלית)</label>
-              <input type="text" placeholder="שם משתמש" name="username" class="form-control">
+              <label class="control-label">שם משתמש</label>
+              <input type="text" placeholder="שם משתמש" name="username" value="" class="form-control">
             </div>
             <div class="form-group">
-              <label class="control-label">הזן סיסמה</label>
-              <input type="password" name="password" value="" placeholder="סיסמה" class="form-control">
+              <label class="control-label">סיסמה</label>
+              <input type="password" name="password" value="" id="inputPassword" placeholder="סיסמה" class="form-control">
+            </div>
+             <div class="form-group">
+              <label class="control-label">הזן סיסמה שנית</label>
+              <input type="password" name="password2" value="" id="inputPassword2" placeholder="הזן סיסמה שנית" class="form-control">
             </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox"> אשר <a href="#"> תנאים ומדיניות </a>
               </label>
-            </div>
-            <button type="submit" class="btn btn-info">הירשם</button>
+            </div>           
+            <g:submitToRemote url="[controller: 'auth', action:'register']" class="btn btn-info" method="POST" update="resultsDiv" value="הירשם"/>	
             <div class="line line-dashed"></div>
             <p class="text-muted text-center"><small>כבר יש לך חשבון?</small></p>
             <g:link action="login" class="btn btn-white btn-block">התחבר</g:link>
-          </form>
+          </g:form>
         </section>
       </div>
     </div>

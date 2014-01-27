@@ -9,7 +9,7 @@
 	      <g:include id="pageHeader" action="headerNavigation" controller="secrecy"/>        
 	      <g:if test="${targetPhoneInstanceList!=null}">
 	      <section class="scrollable">
-	       <!-- <div class="header b-b bg-white-only">
+	       <%-- <div class="header b-b bg-white-only">
 	          <div class="row">
 	            <div class="col-sm-4">
 	              <h4 class="m-t m-b-none">Statistics</h4>
@@ -37,7 +37,7 @@
 	              </div>
 	            </div>
 	          </div>
-	        </div>  -->        
+	        </div>  --%>        
 	        <div class="row">
 	        	<div class="wrapper">
 	         	<div class="col-sm-12">
@@ -93,7 +93,7 @@
 								  		  <img src="${resource(dir: 'images', file: 'avatar_default.jpg')}" class="img-circle">
 									  </g:else>                        
 			                      </a>
-			                      <!-- <b class="badge">302 אנשי קשר</b>-->
+			                      <%-- <b class="badge">302 אנשי קשר</b>--%>
 			                      <div class="clear">
 			                        <div class="h3 m-t-xs m-b-xs">${currentTargetPhone.alias}</div>                        
 			                        <small class="text-muted">${currentTargetPhone.line1Number!='' ? currentTargetPhone.line1Number : 'לא קיים מספר להצגה'}</small>
@@ -118,8 +118,7 @@
 			                  </section>
 			                  <header class="panel-heading bg-primary dker no-borders">
 			                    <div class="clearfix">
-			    	               
-			                      <!-- <b class="badge">302 אנשי קשר</b>-->
+			                      <%-- <b class="badge">302 אנשי קשר</b> --%>
 			                      <div class="clear">
 			                                                
 			                        <small class="text-muted">הערה או תיבת סימון לפונקציונליות מסויימת.</small>
@@ -263,7 +262,7 @@
 			                 </div>
 		                  </section>
 		               </div>
-	                 	   	<div class="col-md-12">
+	                   <div class="col-md-12">
 			              <section class="panel">
 			                <header class="panel-heading">
 							  	<ul class="nav nav-pills pull-left">

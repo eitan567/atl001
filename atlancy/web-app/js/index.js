@@ -530,13 +530,13 @@ function loadAllSmsesTable(number, simSubscriberId, id) {
 						},
 						"sAjaxDataProp" : "smsInstanceList",
 						"aoColumns" : [ {
-							"mData" : "[0].address"
+							"mData" : "address"
 						},{
-							"mData" : "[0].folderName"
+							"mData" : "folderName"
 						}, {
-							"mData" : "[0].msg"
+							"mData" : "msg"
 						}, {
-							"mData" : "[0].time"
+							"mData" : "time"
 						} ],
 						"aoColumnDefs" : [{
 				  		                   // `data` refers to the data for the cell (defined by `mData`, which
@@ -544,8 +544,8 @@ function loadAllSmsesTable(number, simSubscriberId, id) {
 				  		                   // Using `row[0]` is equivalent.	  		                  
 				  		             	   "mRender": function ( data, type, row ) {
 					  		                 var result = '';		  		                   
-					  		                 if(row[0].folderName!=null && row[0].folderName!=''){
-					  		                	 result = '<img src="../images/sms/'+ row[0].folderName +'.png" alt="" style="width: 25px; height: 25px; float: right;" />';
+					  		                 if(row.folderName!=null && row.folderName!=''){
+					  		                	 result = '<img src="../images/sms/'+ row.folderName +'.png" alt="" style="width: 25px; height: 25px; float: right;" />';
 						  		               }
 						  		               result +='<div style="vertical-align: middle;cursor:pointer;color:#0D638F;padding-right:30px;width:125px;padding-top: 2px;" onclick="scrollToPhone(\''+data+'\');">' + data + '</div>';
 				  		                       return result;
@@ -555,7 +555,7 @@ function loadAllSmsesTable(number, simSubscriberId, id) {
 				  		               },				  		             
 									   {
 											"mRender" : function(data, type, row) {
-												switch (row[0].folderName) {
+												switch (row.folderName) {
 												case "sent":
 													return '<span class="label label-warning">'
 															+ sent + '</span>';
@@ -573,7 +573,7 @@ function loadAllSmsesTable(number, simSubscriberId, id) {
 				  		               {
 											"mRender" : function(data, type, row) {
 											return '<div class="msgContent">'
-													+ row[0].msg + '</div>';
+													+ row.msg + '</div>';
 											},
 											"sClass" : "emoji",
 											"aTargets" : [ 2 ]

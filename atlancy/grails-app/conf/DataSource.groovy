@@ -37,9 +37,9 @@ environments {
 	development {
 		dataSource {
 			dbCreate = "update" // one of 'create', 'create-drop','update'
-			// = "jdbc:mysql://remote-mysql3.servage.net:3306/trixico567?useUnicode=yes&characterEncoding=UTF-8&collation=utf8mb4_general_ci"
-			//username = "trixico567"
-			//password = "567567567"
+//			url = "jdbc:mysql://remote-mysql3.servage.net:3306/atlancy?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+//			username = "atlancy"
+//			password = "567567567"
 			
 			//url="jdbc:postgresql://ec2-107-20-220-11.compute-1.amazonaws.com:5432/d1ssepvfjbk60g"
 			//username = "puxxbzzyskthea"
@@ -62,6 +62,9 @@ environments {
 	test {
 		dataSource {
 			dbCreate = "update" // one of 'create', 'create-drop','update'
+//			url = "jdbc:mysql://remote-mysql3.servage.net:3306/atlancy?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+//			username = "atlancy"
+//			password = "567567567"
 //			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_6a0356c2d5724f7?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
 //			username = "b9ffc6703dfbc2"
 //			password = "41b44e53"
@@ -81,6 +84,9 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
+//			url = "jdbc:mysql://remote-mysql3.servage.net:3306/atlancy?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
+//			username = "atlancy"
+//			password = "567567567"
 //			url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_6a0356c2d5724f7?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci"
 //			username = "b9ffc6703dfbc2"
 //			password = "41b44e53"
